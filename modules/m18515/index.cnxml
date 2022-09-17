@@ -1,0 +1,173 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>util_AWGNchannel_PtByPt.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18515</md:content-id>
+  <md:title>util_AWGNchannel_PtByPt.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to simulate an additive white Gaussian noise-impaired channel.</md:abstract>
+  <md:uuid>d201eb04-8746-4a28-a47f-fa212fd95b62</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm988752" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp6475344">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: util_AWGNchannel_PtByPt.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Simulate an additive white Gaussian noise-impaired channel. This subVI
+			works on a point-by-point basis and is intended to operated within
+			a for-loop or while-loop structure.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		General-purpose utility ("util" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">signal in</code> -- DBL </item>
+<item> <code display="inline">Eb, energy per bit [J/bit] (1)</code> -- DBL </item>
+<item> <code display="inline">Eb/No, SNR per bit [dB] (10)</code> -- DBL </item>
+<item> <code display="inline">fs [Hz] (1000)</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">signal out</code> -- DBL </item>
+<item> <code display="inline">sigma</code> -- DBL </item>
+<item> <code display="inline">Eb/No</code> -- DBL </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			A new sample of a Gaussian white noise process is determined and added to <code display="inline">signal in</code> 
+			each time the subVI runs to produce <code display="inline">signal out</code>.
+	 </item>
+<item> 
+			The standard deviation parameter of the Gaussian white noise generator is calculated as
+<m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:mi>σ</m:mi><m:mo>=</m:mo><m:msqrt>
+    <m:mrow>
+     <m:mfrac>
+      <m:mrow>
+       <m:msub>
+        <m:mi>E</m:mi>
+        <m:mi>b</m:mi>
+       </m:msub>
+       <m:msub>
+        <m:mi>f</m:mi>
+        <m:mi>s</m:mi>
+       </m:msub>
+      </m:mrow>
+      <m:mrow>
+       <m:mn>2</m:mn><m:mo>⋅</m:mo><m:msup>
+        <m:mrow>
+         <m:mn>10</m:mn>
+        </m:mrow>
+        <m:mrow>
+         <m:mrow><m:mrow>
+          <m:msub>
+           <m:mi>E</m:mi>
+           <m:mi>b</m:mi>
+          </m:msub>
+          <m:mo>/</m:mo><m:msub>
+           <m:mi>N</m:mi>
+           <m:mn>0</m:mn>
+          </m:msub>
+          <m:mtext>[dB]</m:mtext>
+         </m:mrow><m:mo>/</m:mo><m:mrow>
+          <m:mn>10</m:mn>
+         </m:mrow></m:mrow>
+        </m:mrow>
+       </m:msup>
+      </m:mrow>
+     </m:mfrac>
+    </m:mrow>
+   </m:msqrt>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aqatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacqaHdpWCcqGH9aqpdaGcaaqaamaalaaabaGaamyramaaBaaaleaacaWGIbaabeaakiaadAgadaWgaaWcbaGaam4CaaqabaaakeaacaaIYaGaeyyXICTaaGymaiaaicdadaahaaWcbeqaamaalyaabaGaamyramaaBaaameaacaWGIbaabeaaliaac+cacaWGobWaaSbaaWqaaiaaicdaaeqaaSGaae4waiaabsgacaqGcbGaaeyxaaqaaiaaigdacaaIWaaaaaaaaaaabeaaaaa@4A2E@</m:annotation>
+ </m:semantics>
+</m:math>
+and is reported by the <code display="inline">sigma</code> indicator.
+	 </item>
+<item> 
+			<code display="inline">Eb/No</code> indicates the SNR per bit converted from the decibel form of the corresponding control.
+	 </item>
+
+</list>
+
+<para id="par10">
+		The equation used to convert Eb/No to standard deviation is derived in the screencast video of <link target-id="video-explained"/>.
+</para>
+
+<figure id="video-explained"><title><link url="https://youtu.be/5Dmt-27e0nw" window="new">https://youtu.be/5Dmt-27e0nw</link> (5:12)</title><media id="eip-idm392973536" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/5Dmt-27e0nw?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] Convert Eb/No to standard deviation
+</caption></figure></section>
+
+<section id="sec12">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par13">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par14">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/5sNWpkJpaYY" window="new">https://youtu.be/5sNWpkJpaYY</link> (1:56)</title><media id="eip-idm466307696" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/5sNWpkJpaYY?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for util_AWGNchannel_PtByPt.vi
+</caption></figure></section>
+
+</content>
+</document>

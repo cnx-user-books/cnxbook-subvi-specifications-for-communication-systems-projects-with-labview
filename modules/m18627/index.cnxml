@@ -1,0 +1,115 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>regen_BitSync.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18627</md:content-id>
+  <md:title>regen_BitSync.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to recover a bitstream synchronization signal as an array of sampling instants.</md:abstract>
+  <md:uuid>5b42fd97-21e8-405d-b37e-6ef803f31254</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm20884064" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm12229376">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: regen_BitSync.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Recover a bitstream synchronization signal from a polar NRZ baseband signal
+			as an array of sampling instants.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+			Bitstream regeneration ("regen" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">signal in</code> -- waveform </item>
+<item> <code display="inline">bit rate [Hz]</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">sampling instants</code> -- Boolean 1-D array </item>
+<item> <code display="inline">intermediate signals</code> -- cluster of three waveforms: (1) absolute value, (2) bandpass filter, and (3)
+	thresholded BPF </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			Pass <code display="inline">signal in</code> through a "square-law" device (square the waveform), and
+			then through a narrowband bandpass filter tuned to the bit rate.
+	 </item>
+<item> 
+			Detect locations of negative-going zero crossings of the bandpass filter output and return as the Boolean
+			array <code display="inline">sampling instants</code>.
+	 </item>
+<item> 
+			Bundle the intermediate signals (square-law device output, bandpass filter output, and thresholded
+			bandpass filter output) as the cluster <code display="inline">intermediate signals</code>.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/8cFPJ8X4Lus" window="new">https://youtu.be/8cFPJ8X4Lus</link> (7:39)</title><media id="eip-idm365571760" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/8cFPJ8X4Lus?rel=0" autoplay="false" width="640" height="460"/></media>
+<caption>[video] LabVIEW coding tips and techniques for regen_BitSync.vi
+</caption></figure></section>
+
+</content>
+</document>

@@ -1,0 +1,112 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>util_Qfunction.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18545</md:content-id>
+  <md:title>util_Qfunction.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to evaluate the Q-function.</md:abstract>
+  <md:uuid>02326007-bf94-4c02-9ec6-fe6a40c62259</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idp10469648" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp18801728">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: util_Qfunction.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Evaluate the Q-function Q(x), the area under the right-side tail of
+			a zero-mean unit-variance Gaussian probability density function from
+			x to positive infinity.
+
+			The Q-function is widely used in communication systems for
+			probability-of-error calculations.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		General-purpose utility ("util" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">x</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">Q(x)</code> -- DBL </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			Given the parameter value <code display="inline">x</code>, return
+			the area under the right-side tail of
+			a zero-mean unit-variance Gaussian probability density function from
+			x to positive infinity.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/odTL3vVbJgY" window="new">https://youtu.be/odTL3vVbJgY</link> (2:59)</title><media id="eip-idm325871888" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/odTL3vVbJgY?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for util_Qfunction.vi
+</caption></figure></section>
+
+</content>
+</document>

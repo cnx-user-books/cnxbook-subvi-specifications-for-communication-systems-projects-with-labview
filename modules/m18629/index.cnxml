@@ -1,0 +1,116 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>util_BitstreamToText.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18629</md:content-id>
+  <md:title>util_BitstreamToText.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to interpret a bitstream as a text character sequence.</md:abstract>
+  <md:uuid>21055992-c56c-4e20-b337-3b9577442880</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idp663216" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm5350096">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: util_BitstreamToText.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+		Interpret a bitstream as a sequence of text characters. Framing bits (start bit
+		and stop bit) may optionally have been added to the bitstream, and are removed.
+	        Framing errors (mismatch between expected and actual values of framing bits) are indicated.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		General-purpose utility ("util" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">bitstream in</code> -- Boolean 1-D array </item>
+<item> <code display="inline">includes framing bits (F)</code> -- Boolean </item>
+<item> <code display="inline">start bit value (T)</code> -- Boolean </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">text out</code> -- string </item>
+<item> <code display="inline">framing error?</code> -- 1-D Boolean array </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			The bitstream must follow the indexing schemes imposed by
+			the LabVIEW built-in nodes "Boolean Array to Number" and "Byte Array to String."
+	 </item>
+<item> 
+			When <code display="inline">includes framing bits</code> is true, the start bit leading the
+			8-element Boolean subarray (a single text character) and the trailing stop bit will be removed from the bitstream before converting to text.
+			In addition, the start bit will be compared to the expected value <code display="inline">start bit value</code>; the same
+			holds true for the stop bit, which is assumed to be the complement of <code display="inline">start bit value</code>. 
+			Any mismatch is to be flagged as a framing error by setting <code display="inline">framing error?</code> true.
+		 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/XaqGTmduW7Y" window="new">https://youtu.be/XaqGTmduW7Y</link> (6:06)</title><media id="eip-idm412623520" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/XaqGTmduW7Y?rel=0" autoplay="false" width="640" height="460"/></media>
+
+<caption>[video] LabVIEW coding tips and techniques for util_BitstreamToText.vi
+</caption></figure></section>
+
+</content>
+</document>

@@ -1,0 +1,109 @@
+<!-- title = regen_BitClock.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to create a bit clock signal based on a free-running oscillator with a sync input.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: regen_BitClock.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+			Create a bit clock signal based on a free-running oscillator with a sync input.
+			The bit clock signal is a square wave oscillating at a nominal frequency.
+			The oscillator phase resets when the synchronizing input pulse is active.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+			Bitstream regeneration ("regen" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}restart bit interval{/code} -- 1-D Boolean array</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}nominal frequency [Hz]{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}fs [Hz]{/code} -- DBL</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>1</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}bit clock{/code} -- 1-D Boolean array</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>
+			{code type=&quot;inline&quot;}bit clock{/code} is the output of a square wave oscillator represented as a
+			Boolean array. The nominal oscillation frequency is determined by the inputs {code type=&quot;inline&quot;}nominal frequency{/code} 
+			in Hz and the system sampling frequency {code type=&quot;inline&quot;}fs{/code}, also in Hz.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The {code type=&quot;inline&quot;}bit clock{/code} output array is the same length as the input array
+			{code type=&quot;inline&quot;}restart bit interval{/code}.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The oscillator phase resets anytime that {code type=&quot;inline&quot;}restart bit interval{/code} is 
+			{code type=&quot;inline&quot;}T{/code}, thereby synchronizing the bit clock to the beginning of a bit interval as
+			detected by another system.
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>regen_BitClock.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for regen_BitClock.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

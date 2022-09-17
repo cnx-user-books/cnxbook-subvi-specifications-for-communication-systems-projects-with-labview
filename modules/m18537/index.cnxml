@@ -1,0 +1,117 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>util_BinarySymmetricChannel.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18537</md:content-id>
+  <md:title>util_BinarySymmetricChannel.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to implement a binary symmetric channel (BSC).</md:abstract>
+  <md:uuid>267989c3-7e41-4cfb-b4d9-9ce200404e38</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm5825632" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm9114544">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: util_BinarySymmetricChannel.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+		A <term>binary symmetric channel</term> (BSC) simulates a digital communication channel with a simple probabilistic model.
+		The simple model makes two assumptions: (1) bit errors occur independently for each bit transmitted through the channel,
+		and (2) a bit error transforming a 0 to a 1 is equally likely as an error transforming a 1 to a 0, i.e., the channel is symmetric.
+		Create a subVI that accepts an input bitstream to produce an output bitstream in which errors are inserted according to a
+		specified bit error rate (or probability of error).
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		General-purpose utility ("util" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">bitstream in</code> -- 1-D Boolean array </item>
+<item> <code display="inline">bit error rate</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">bitstream out</code> -- 1-D Boolean array </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+		Introduce bit errors into the bitstream according to the specified bit error rate.
+	 </item>
+<item> 
+		Bit errors from one bit to the next are independent of one another.
+	 </item>
+<item> 
+		Transforming a "True" to a "False" is equally likely to transforming a "False" to a "True."
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+		Two distinct approaches are demonstrated, one based on the "Random Number (0-1)" built-in LabVIEW node and another based on 
+		the "Bernoulli Noise" built-in subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/tYohmUBooS8" window="new">https://youtu.be/tYohmUBooS8</link> (9:42)</title><media id="eip-idm1279927232" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/tYohmUBooS8?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for util_BinarySymmetricChannel.vi
+</caption></figure></section>
+
+</content>
+</document>

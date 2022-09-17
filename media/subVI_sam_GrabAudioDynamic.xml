@@ -1,0 +1,123 @@
+<!-- title = sam_GrabAudioDynamic.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to wait for audio level to exceed a user-defined threshold, and then record audio until the 
+audio level drops below the threshold again.
+-->
+
+<!-- prerequisite modules = sam_ListenForAudio.vi, sam_GrabAudio
+-->
+
+<!-- links: = 
+	useful reference regarding memory allocation:
+	http://zone.ni.com/devzone/cda/tut/p/id/3747
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: sam_GrabAudioDynamic.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+			Wait for audio level to exceed a user-defined threshold, and then record audio 
+			until the audio level drops below the threshold again or recording duration reaches
+			a maximum value.  
+			
+			This subVI depends on {cnxn document=&quot;m18598&quot;}sam_ListenForAudio.vi{/cnxn}.
+			In addition, {cnxn document=&quot;m18499&quot;}sam_GrabAudio.vi{/cnxn} should be
+			constructed before attempting the dynamic-stop version of this module.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+		Speaker-air-microphone (SAM) channel ("sam" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>5</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}frame length [s] (0.1){/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}max duration [s] (10){/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}threshold level (0.1){/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}fs [Hz] (22050){/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}error in (no error){/code} -- error cluster</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}signal out{/code} -- waveform</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}error out{/code} -- error cluster</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>
+			Use {cnxn document=&quot;m18598&quot;}sam_ListenForAudio.vi{/cnxn} to continually acquire audio 
+			samples in blocks (frames) of size {code type=&quot;inline&quot;}frame length{/code}.
+			Once "sam_ListenForAudio" completes execution (i.e., when the audio level exceeds
+			{code type=&quot;inline&quot;}threshold level{/code}), record and store audio frames until
+			either of two possible conditions occurs: (1) maximum audio level within a frame is lower than
+			the {code type=&quot;inline&quot;}threshold level{/code}, or (2) total number of stored audio
+			frames would exceed {code type=&quot;inline&quot;}max duration{/code}.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The audio output of {cnxn document=&quot;m18598&quot;}sam_ListenForAudio.vi{/cnxn} serves as 
+			the beginning of the audio signal {code type=&quot;inline&quot;}signal out{/code}.
+			The last audio frame containing silence must be excluded from
+			{code type=&quot;inline&quot;}signal out{/code}.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The sound-card must be cleaned up using "Graphics and Sound | Sound | Input | Sound Input Clear" once the audio has
+			been recorded.
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Free LabVIEW Code</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		{media type="image/png" src="LabVIEW.png"/} This subVI is rather complex to build and debug, so
+		feel free to download the finished subVI 
+		{link src=&quot;sam_GrabAudioDynamic.vi&quot;}sam_GrabAudioDynamic.vi{/link}.
+
+		You may find it helpful to test the subVI with the demo 
+		{link src=&quot;sam_GrabAudioDynamic_demo.vi&quot;}sam_GrabAudioDynamic_demo.vi{/link}.
+</Val> </String>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

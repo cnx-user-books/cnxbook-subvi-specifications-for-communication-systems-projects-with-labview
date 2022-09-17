@@ -1,0 +1,166 @@
+<!-- title = util_AWGNchannel_PtByPt.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to simulate an additive white Gaussian noise-impaired channel.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: util_AWGNchannel_PtByPt.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+			Simulate an additive white Gaussian noise-impaired channel. This subVI
+			works on a point-by-point basis and is intended to operated within
+			a for-loop or while-loop structure.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+		General-purpose utility ("util" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>4</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}signal in{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}Eb, energy per bit [J/bit] (1){/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}Eb/No, SNR per bit [dB] (10){/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}fs [Hz] (1000){/code} -- DBL</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}signal out{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}sigma{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}Eb/No{/code} -- DBL</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>
+			A new sample of a Gaussian white noise process is determined and added to {code type=&quot;inline&quot;}signal in{/code} 
+			each time the subVI runs to produce {code type=&quot;inline&quot;}signal out{/code}.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The standard deviation parameter of the Gaussian white noise generator is calculated as
+{m:math}
+ {m:semantics}
+  {m:mrow}
+   {m:mi}&amp;#x03C3;{/m:mi}{m:mo}={/m:mo}{m:msqrt}
+    {m:mrow}
+     {m:mfrac}
+      {m:mrow}
+       {m:msub}
+        {m:mi}E{/m:mi}
+        {m:mi}b{/m:mi}
+       {/m:msub}
+       {m:msub}
+        {m:mi}f{/m:mi}
+        {m:mi}s{/m:mi}
+       {/m:msub}
+      {/m:mrow}
+      {m:mrow}
+       {m:mn}2{/m:mn}{m:mo}&amp;#x22C5;{/m:mo}{m:msup}
+        {m:mrow}
+         {m:mn}10{/m:mn}
+        {/m:mrow}
+        {m:mrow}
+         {m:mrow}{m:mrow}
+          {m:msub}
+           {m:mi}E{/m:mi}
+           {m:mi}b{/m:mi}
+          {/m:msub}
+          {m:mo}/{/m:mo}{m:msub}
+           {m:mi}N{/m:mi}
+           {m:mn}0{/m:mn}
+          {/m:msub}
+          {m:mtext}[dB]{/m:mtext}
+         {/m:mrow}{m:mo}/{/m:mo}{m:mrow}
+          {m:mn}10{/m:mn}
+         {/m:mrow}{/m:mrow}
+        {/m:mrow}
+       {/m:msup}
+      {/m:mrow}
+     {/m:mfrac}
+    {/m:mrow}
+   {/m:msqrt}
+  {/m:mrow}
+ {m:annotation encoding=&apos;MathType-MTEF&apos;}
+ MathType@MTEF@5@5@+=feaagaart1ev2aqatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacqaHdpWCcqGH9aqpdaGcaaqaamaalaaabaGaamyramaaBaaaleaacaWGIbaabeaakiaadAgadaWgaaWcbaGaam4CaaqabaaakeaacaaIYaGaeyyXICTaaGymaiaaicdadaahaaWcbeqaamaalyaabaGaamyramaaBaaameaacaWGIbaabeaaliaac+cacaWGobWaaSbaaWqaaiaaicdaaeqaaSGaae4waiaabsgacaqGcbGaaeyxaaqaaiaaigdacaaIWaaaaaaaaaaabeaaaaa@4A2E@{/m:annotation}
+ {/m:semantics}
+{/m:math}
+and is reported by the {code type=&quot;inline&quot;}sigma{/code} indicator.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			{code type=&quot;inline&quot;}Eb/No{/code} indicates the SNR per bit converted from the decibel form of the corresponding control.
+	</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+		The equation used to convert Eb/No to standard deviation is derived in the screencast video of {cnxn target=&quot;video-explained&quot;/}.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video-explained</Val> </String>
+<String> <Name>video name</Name> <Val>explained</Val> </String>
+<String> <Name>webpage title</Name> <Val>Raised cosine pulse</Val> </String>
+<String> <Name>caption</Name> <Val>Convert Eb/No to standard deviation</Val> </String>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>util_AWGNchannel_PtByPt.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for util_AWGNchannel_PtByPt.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

@@ -1,0 +1,118 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>util_EdgeDetector.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18606</md:content-id>
+  <md:title>util_EdgeDetector.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to detect edges (transitions) in a bitstream.</md:abstract>
+  <md:uuid>3852714d-3417-420b-8675-2545d82cfba9</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idp742272" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp2918688">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: util_EdgeDetector.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Detect edges (transitions) in a bitstream, and indicate rising edge,
+			falling edge, or either edge as three distinct outputs.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		General-purpose utility ("util" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">bitstream in</code> -- 1-D array of Boolean </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">rising edge</code> -- 1-D array of Boolean </item>
+<item> <code display="inline">falling edge</code> -- 1-D array of Boolean </item>
+<item> <code display="inline">either edge</code> -- 1-D array of Boolean </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			Each of the three Boolean output indicators is an array of the same size as the input bitstream.
+	 </item>
+<item> 
+			<code display="inline">rising edge</code> is <code display="inline">T</code> whenever the
+			the input bitstream sequence changes from <code display="inline">F</code> to <code display="inline">T</code>.
+	 </item>
+<item> 
+			<code display="inline">falling edge</code> is <code display="inline">T</code> whenever the
+			the input bitstream sequence changes from <code display="inline">T</code> to <code display="inline">F</code>.
+	 </item>
+<item> 
+			<code display="inline">either edge</code> is the logical "OR" of the previous two indicator outputs.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/QB6keqeYh64" window="new">https://youtu.be/QB6keqeYh64</link> (4:36)</title><media id="eip-idm904576912" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/QB6keqeYh64?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for util_EdgeDetector.vi
+</caption></figure></section>
+
+</content>
+</document>

@@ -1,0 +1,212 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>pam_RaisedCosinePulse.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18566</md:content-id>
+  <md:title>pam_RaisedCosinePulse.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to create a raised cosine pulse shape suitable for a pulse amplitude modulation (PAM) transmitters.</md:abstract>
+  <md:uuid>b0fd33fb-c2cf-4268-aa2f-54860f428286</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm1394496" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp7093168">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: pam_RaisedCosinePulse.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+		Create a raised cosine pulse shape suitable for a pulse amplitude modulation (PAM) transmitter.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		Pulse amplitude modulation (PAM) ("pam" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">Tb, bit interval (0.01) [s]</code> -- DBL </item>
+<item> <code display="inline">alpha, excess bandwidth factor (0.5)</code> -- DBL </item>
+<item> <code display="inline">N, bit intervals for support (4)</code> -- DBL </item>
+<item> <code display="inline">fs, sampling frequency (1000) [Hz]</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">pulse shape</code> -- 1-D DBL array </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			"pulse shape" is an array containing the raised cosine pulse shape defined by the equation
+<m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:mi>p</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>sinc</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:msub>
+    <m:mi>B</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   <m:mi>t</m:mi><m:mo stretchy="false">)</m:mo><m:mrow><m:mo>(</m:mo>
+    <m:mrow>
+     <m:mfrac>
+      <m:mrow>
+       <m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>α</m:mi><m:msub>
+        <m:mi>B</m:mi>
+        <m:mn>0</m:mn>
+       </m:msub>
+       <m:mi>t</m:mi><m:mo stretchy="false">)</m:mo>
+      </m:mrow>
+      <m:mrow>
+       <m:mn>1</m:mn><m:mo>−</m:mo><m:mn>16</m:mn><m:msup>
+        <m:mrow>
+         <m:mo stretchy="false">(</m:mo><m:mi>α</m:mi><m:msub>
+          <m:mi>B</m:mi>
+          <m:mn>0</m:mn>
+         </m:msub>
+         <m:mi>t</m:mi><m:mo stretchy="false">)</m:mo>
+        </m:mrow>
+        <m:mn>2</m:mn>
+       </m:msup>
+      </m:mrow>
+     </m:mfrac>
+    </m:mrow>
+   <m:mo>)</m:mo></m:mrow>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGWbGaaiikaiaadshacaGGPaGaeyypa0Jaci4CaiaacMgacaGGUbGaai4yaiGacIcacaaIYaGaamOqamaaBaaaleaacaaIWaaabeaakiaadshacaGGPaWaaeWaaeaadaWcaaqaaiGacogacaGGVbGaai4CaiaacIcacaaIYaGaeqiWdaNaeqySdeMaamOqamaaBaaaleaacaaIWaaabeaakiaadshacaGGPaaabaGaaGymaiabgkHiTiaaigdacaaI2aGaaiikaiabeg7aHjaadkeadaWgaaWcbaGaaGimaaqabaGccaWG0bGaaiykamaaCaaaleqabaGaaGOmaaaaaaaakiaawIcacaGLPaaaaaa@5864@</m:annotation>
+ </m:semantics>
+</m:math>
+	 </item>
+<item> 
+<m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>B</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aqatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGcbWaaSbaaSqaaiaaicdaaeqaaaaa@36F4@</m:annotation>
+ </m:semantics>
+</m:math> = Nyquist bandwidth, the minimum possible transmit bandwidth achieved by a sinc pulse
+	 </item>
+<item> 
+<m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>B</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   <m:mo>=</m:mo><m:mfrac>
+    <m:mn>1</m:mn>
+    <m:mrow>
+     <m:mn>2</m:mn><m:msub>
+      <m:mi>T</m:mi>
+      <m:mi>b</m:mi>
+     </m:msub>
+    </m:mrow>
+   </m:mfrac>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aqatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGcbWaaSbaaSqaaiaaicdaaeqaaOGaeyypa0ZaaSaaaeaacaaIXaaabaGaaGOmaiaadsfadaWgaaWcbaGaamOyaaqabaaaaaaa@3B77@</m:annotation>
+ </m:semantics>
+</m:math>, where Tb is the bit interval
+	 </item>
+<item> 
+<m:math>
+ <m:semantics>
+  <m:mi>α</m:mi>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aqatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacqaHXoqyaaa@36E6@</m:annotation>
+ </m:semantics>
+ </m:math> = roll-off factor (also called excess bandwidth factor),
+<m:math>
+ <m:semantics>
+  <m:mrow>
+   <m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>α</m:mi><m:mo>≤</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aqatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaaIWaGaeyizImQaeqySdeMaeyizImQaaGymaaaa@3BC5@</m:annotation>
+ </m:semantics>
+</m:math> (alpha = 0 creates an unmodified sinc pulse, and alpha = 1 creates a fully damped sinc pulse with twice the Nyquist bandwidth).
+	 </item>
+<item> 
+		The "alpha" control value must be limited to the range 0 to 1 and be incrementable by steps of 0.1.
+	 </item>
+
+</list>
+
+<para id="par10">
+		The raised cosine pulse shape is fundamental to digital communication systems. Its name derives from its frequency-domain
+		shape. Refer to the <link target-id="video-explained"/> 
+		screencast video to learn more about the raised cosine pulse.
+</para>
+
+<figure id="video-explained"><title><link url="https://youtu.be/BUvafWYXmlI" window="new">https://youtu.be/BUvafWYXmlI</link> (11:31)</title><media id="eip-idm348481584" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/BUvafWYXmlI?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] Explanation of raised cosine pulse
+</caption></figure></section>
+
+<section id="sec12">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par13">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par14">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/6mdsUWRAoqg" window="new">https://youtu.be/6mdsUWRAoqg</link> (11:11)</title><media id="eip-idm317147888" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/6mdsUWRAoqg?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for pam_RaisedCosinePulse.vi
+</caption></figure></section>
+
+</content>
+</document>

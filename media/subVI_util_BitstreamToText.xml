@@ -1,0 +1,107 @@
+<!-- title = util_BitstreamToText.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to interpret a bitstream as a text character sequence.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: util_BitstreamToText.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+		Interpret a bitstream as a sequence of text characters. Framing bits (start bit
+		and stop bit) may optionally have been added to the bitstream, and are removed.
+	        Framing errors (mismatch between expected and actual values of framing bits) are indicated.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+		General-purpose utility ("util" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}bitstream in{/code} -- Boolean 1-D array</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}includes framing bits (F){/code} -- Boolean</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}start bit value (T){/code} -- Boolean</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}text out{/code} -- string</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}framing error?{/code} -- 1-D Boolean array</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>
+			The bitstream must follow the indexing schemes imposed by
+			the LabVIEW built-in nodes "Boolean Array to Number" and "Byte Array to String."
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			When {code type=&quot;inline&quot;}includes framing bits{/code} is true, the start bit leading the
+			8-element Boolean subarray (a single text character) and the trailing stop bit will be removed from the bitstream before converting to text.
+			In addition, the start bit will be compared to the expected value {code type=&quot;inline&quot;}start bit value{/code}; the same
+			holds true for the stop bit, which is assumed to be the complement of {code type=&quot;inline&quot;}start bit value{/code}. 
+			Any mismatch is to be flagged as a framing error by setting {code type=&quot;inline&quot;}framing error?{/code} true.
+		</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>util_BitstreamToText.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for util_BitstreamToText.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

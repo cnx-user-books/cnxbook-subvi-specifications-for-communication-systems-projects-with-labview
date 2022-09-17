@@ -1,0 +1,103 @@
+<!-- title = util_BitstreamFromText.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to generate a bitstream from a text character sequence.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: util_BitstreamFromText.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+		Generate a bitstream from a sequence of text characters. Framing bits (start bit
+		and stop bit) may optionally be added to the bitstream. The bitstream is also
+		available in the form of a wordstream.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+		General-purpose utility ("util" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}text{/code} -- string</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}insert framing bits (F){/code} -- Boolean</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}start bit value (T){/code} -- Boolean</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}bitstream out{/code} -- 1-D Boolean array</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}wordstream out{/code} -- 2-D Boolean array</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>Converted text follows the indexing schemes imposed by
+	the LabVIEW built-in nodes "String to Byte Array" and "Number to Boolean Array."</Val> </String>
+	<String> <Name>String</Name> <Val>When requested, the "start bit value" will be prepended to the
+			8-bit Boolean value, and the complement of the "start bit value" will be appended to
+	the 8-bit Boolean value.</Val> </String>
+	<String> <Name>String</Name> <Val>The wordstream is an Nx8 2-D version of the 1-D bitstream (Nx10
+	if framing bits have been inserted), where "N" is the number of characters in the text control.</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>util_BitstreamFromText.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for util_BitstreamFromText.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

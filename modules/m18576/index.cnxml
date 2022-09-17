@@ -1,0 +1,114 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>regen_FrameSync.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18576</md:content-id>
+  <md:title>regen_FrameSync.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to establish frame sync on a bitstream containing a standard preamble plus message, and then return the message portion of the bitstream.</md:abstract>
+  <md:uuid>d550091a-47c1-4dbe-b156-94b787fdc94d</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm4734352" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp4315536">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: regen_FrameSync.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Establish frame sync on a message containing a standard preamble, and then return the message portion of the bitstream.
+			The bitstream must satisfy the following requirement: (1) Message frame size = 10 bits (start bit, 8-bit character, and stop bit),
+			(2) start bit = <code display="inline">F</code>, stop bit = <code display="inline">T </code>, and
+			(3) message is preceded by one frame containing the 8-bit value 0xFF. Requirement (3) can equivalently be restated
+			as the preamble must end with 9 consecutive <code display="inline">T</code> values.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+			Bitstream regeneration ("regen" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">bitstream in</code> -- 1-D Boolean array </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">bitstream out</code> -- 1-D Boolean array </item>
+<item> <code display="inline">message detected?</code> -- Boolean </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			Search <code display="inline">bitstream in</code> for 9 consecutive <code display="inline">T</code> values, and
+			return the remaining array as <code display="inline">bitstream out</code>. Return an empty array if the
+			required pattern is not found.
+	 </item>
+<item> 
+			Set <code display="inline">message detected?</code> to <code display="inline">T</code> if the required pattern is found.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/seT-98quPuY" window="new">https://youtu.be/seT-98quPuY</link> (3:06)</title><media id="eip-idm471933088" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/seT-98quPuY?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for regen_FrameSync.vi
+</caption></figure></section>
+
+</content>
+</document>

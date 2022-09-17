@@ -1,0 +1,127 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>util_MeasureBER.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18547</md:content-id>
+  <md:title>util_MeasureBER.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to measure the bit error rate (BER) between two bitstreams.</md:abstract>
+  <md:uuid>c163a7e3-7635-47ed-ad69-cbe994b3bf66</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm19142768" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm2816080">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: util_MeasureBER.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Measure the <term>bit error rate</term> (<term>BER</term>) between two
+			bitstreams. This subVI is commonly used to compare a transmitted
+			bitstream to a received bitstream after passing through a noisy channel.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		General-purpose utility ("util" prefix)
+	 </item>
+
+</list>
+
+<para id="par3">
+</para>
+
+</section>
+
+<section id="sec4">
+<title>Inputs (Controls)</title>
+
+<list id="list5" list-type="enumerated">
+
+<item> <code display="inline">bitstream A</code> -- 1-D Boolean array </item>
+<item> <code display="inline">bitstream B</code> -- 1-D Boolean array </item>
+
+</list>
+
+<para id="par6">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec7">
+<title>Outputs (Indicators)</title>
+
+<list id="list8" list-type="enumerated">
+
+<item> <code display="inline">error bitstream</code> -- 1-D Boolean array </item>
+<item> <code display="inline">BER, bit error rate</code> -- DBL </item>
+<item> <code display="inline">error count</code> -- I32 </item>
+<item> <code display="inline">array size mismatch</code> -- Boolean </item>
+
+</list>
+
+</section>
+
+<section id="sec9">
+<title>Required Behavior</title>
+
+<list id="list10" list-type="bulleted">
+
+<item> 
+			A <term>bit error</term> is defined as any discrepancy between <code display="inline">bitstream A</code> and
+			<code display="inline">bitstream B</code> at each array index. The output <code display="inline">error count</code> 
+			indicates the total number of bit errors.
+	 </item>
+<item> 
+			The <code display="inline">error bitstream</code> output indicates <code display="inline">T</code> (true) at
+			each index value where a bit error occurred. Absence of bit errors is indicated by <code display="inline">F</code> (false).
+	 </item>
+<item> 
+			The bit error rate (BER) is calculated as the total number of bit errors divided by the bitstream length. The bit error rate
+			is reported as <code display="inline">NaN</code> ("Not a Number") if the two inbound bitstreams do not have the same length.
+	 </item>
+<item> 
+			The output <code display="inline">array size mismatch</code> will be active (<code display="inline">T</code>) when
+			the two bitstreams do not have the same length.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec11">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par12">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par13">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/dDUVNp4MSaY" window="new">https://youtu.be/dDUVNp4MSaY</link> (5:21)</title><media id="eip-idm724001824" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/dDUVNp4MSaY?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for util_MeasureBER.vi
+</caption></figure></section>
+
+</content>
+</document>

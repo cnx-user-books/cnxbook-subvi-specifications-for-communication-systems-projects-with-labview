@@ -1,0 +1,117 @@
+<!-- title = util_MeasureBER.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to measure the bit error rate (BER) between two bitstreams.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: util_MeasureBER.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+			Measure the {term}bit error rate{/term} ({term}BER{/term}) between two
+			bitstreams. This subVI is commonly used to compare a transmitted
+			bitstream to a received bitstream after passing through a noisy channel.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+		General-purpose utility ("util" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+</Val> </String>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}bitstream A{/code} -- 1-D Boolean array</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}bitstream B{/code} -- 1-D Boolean array</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>4</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}error bitstream{/code} -- 1-D Boolean array</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}BER, bit error rate{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}error count{/code} -- I32</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}array size mismatch{/code} -- Boolean</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>4</Dimsize>
+	<String> <Name>String</Name> <Val>
+			A {term}bit error{/term} is defined as any discrepancy between {code type=&quot;inline&quot;}bitstream A{/code} and
+			{code type=&quot;inline&quot;}bitstream B{/code} at each array index. The output {code type=&quot;inline&quot;}error count{/code} 
+			indicates the total number of bit errors.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The {code type=&quot;inline&quot;}error bitstream{/code} output indicates {code type=&quot;inline&quot;}T{/code} (true) at
+			each index value where a bit error occurred. Absence of bit errors is indicated by {code type=&quot;inline&quot;}F{/code} (false).
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The bit error rate (BER) is calculated as the total number of bit errors divided by the bitstream length. The bit error rate
+			is reported as {code type=&quot;inline&quot;}NaN{/code} ("Not a Number") if the two inbound bitstreams do not have the same length.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The output {code type=&quot;inline&quot;}array size mismatch{/code} will be active ({code type=&quot;inline&quot;}T{/code}) when
+			the two bitstreams do not have the same length.
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>util_MeasureBER.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for util_MeasureBER.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

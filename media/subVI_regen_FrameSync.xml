@@ -1,0 +1,104 @@
+<!-- title = regen_FrameSync.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to establish frame sync on a bitstream containing a standard preamble plus message, and then return the message portion of the bitstream.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: regen_FrameSync.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+			Establish frame sync on a message containing a standard preamble, and then return the message portion of the bitstream.
+			The bitstream must satisfy the following requirement: (1) Message frame size = 10 bits (start bit, 8-bit character, and stop bit),
+			(2) start bit = {code type=&quot;inline&quot;}F{/code}, stop bit = {code type=&quot;inline&quot;}T {/code}, and
+			(3) message is preceded by one frame containing the 8-bit value 0xFF. Requirement (3) can equivalently be restated
+			as the preamble must end with 9 consecutive {code type=&quot;inline&quot;}T{/code} values.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+			Bitstream regeneration ("regen" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>1</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}bitstream in{/code} -- 1-D Boolean array</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}bitstream out{/code} -- 1-D Boolean array</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}message detected?{/code} -- Boolean</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>
+			Search {code type=&quot;inline&quot;}bitstream in{/code} for 9 consecutive {code type=&quot;inline&quot;}T{/code} values, and
+			return the remaining array as {code type=&quot;inline&quot;}bitstream out{/code}. Return an empty array if the
+			required pattern is not found.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			Set {code type=&quot;inline&quot;}message detected?{/code} to {code type=&quot;inline&quot;}T{/code} if the required pattern is found.
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>regen_FrameSync.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for regen_FrameSync.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

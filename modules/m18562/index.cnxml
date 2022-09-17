@@ -1,0 +1,102 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>hamming_Mod2MatrixMultiply.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18562</md:content-id>
+  <md:title>hamming_Mod2MatrixMultiply.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to multiply two matrices A and B under modulo-2 arithmetic.</md:abstract>
+  <md:uuid>89f625f4-88e0-4e2b-a538-7b0ae079cfdc</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idp2242704" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp1421552">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: hamming_Mod2MatrixMultiply.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+		Multiply two matrices A and B under modulo-2 arithmetic.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		Hamming (n,k) block code ("hamming" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">A</code> -- Real Matrix </item>
+<item> <code display="inline">B</code> -- Real Matrix </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">A*B</code> -- Real Matrix </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<para id="par9">
+		The subVI produces the matrix product of A and B subject to modulo-2 arithmetic. Since this subVI is intended for use on matrices populated only by the
+		values 0 and 1, multiplication follows the standard arithmetic rules, while sums are computed using modulo-2 addition.
+</para>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/_p7TY01Mpbs" window="new">https://youtu.be/_p7TY01Mpbs</link> (1:55)</title><media id="eip-idm323183392" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/_p7TY01Mpbs?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for hamming_Mod2MatrixMultiply.vi
+</caption></figure></section>
+
+</content>
+</document>

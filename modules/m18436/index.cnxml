@@ -1,0 +1,113 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>bpm_ReceiverFilter.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18436</md:content-id>
+  <md:title>bpm_ReceiverFilter.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to remove out-of-band signals at the front end of a receiver.</md:abstract>
+  <md:uuid>0d90ca95-afac-4b74-abb8-f64c1be764ab</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm1022288" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp9366832">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: bpm_ReceiverFilter.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Remove out-of-band signals at the front end of a receiver using
+			a bandpass filter tuned to the carrier frequency and with a bandwidth
+			that matches the bandwidth of the transmitted signal.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+			Bandpass modulation ("bpm" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">signal in</code> -- waveform </item>
+<item> <code display="inline">center frequency [Hz] (1000)</code> -- DBL </item>
+<item> <code display="inline">bandwidth [Hz] (100)</code> -- DBL </item>
+<item> <code display="inline">order (10)</code> -- I32 </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">signal out</code> -- waveform </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			<code display="inline">signal in</code> is 
+			filtered by an elliptic bandpass filter to produce <code display="inline">signal out</code> 
+	 </item>
+<item> 
+			The elliptic filter characteristics (center frequency, bandwidth, and order) may be adjusted.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/e-GRyW4vStg" window="new">https://youtu.be/e-GRyW4vStg</link> (2:51)</title><media id="eip-idm1323650208" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/e-GRyW4vStg?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for bpm_ReceiverFilter.vi
+</caption></figure></section>
+
+</content>
+</document>

@@ -1,0 +1,111 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>util_BitstreamFromRandom.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18528</md:content-id>
+  <md:title>util_BitstreamFromRandom.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to generate a bitstream from a random number generator.</md:abstract>
+  <md:uuid>ce8a96fd-1aa4-474d-81a9-844d05b76625</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm5770400" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idp3071072">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: util_BitstreamFromRandom.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+		Generate a bitstream from a random number generator. The probability of generating a 1 can
+		be controlled, as can the value of the random number seed.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		General-purpose utility ("util" prefix)
+	 </item>
+
+</list>
+
+<para id="par3">
+</para>
+
+</section>
+
+<section id="sec4">
+<title>Inputs (Controls)</title>
+
+<list id="list5" list-type="enumerated">
+
+<item> <code display="inline">length (128)</code> -- I32 </item>
+<item> <code display="inline">ones probability (0.5)</code> -- DBL </item>
+<item> <code display="inline">seed (-1)</code> -- I32 </item>
+
+</list>
+
+<para id="par6">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec7">
+<title>Outputs (Indicators)</title>
+
+<list id="list8" list-type="enumerated">
+
+<item> <code display="inline">bitstream out</code> -- 1-D Boolean array </item>
+
+</list>
+
+</section>
+
+<section id="sec9">
+<title>Required Behavior</title>
+
+<list id="list10" list-type="bulleted">
+
+<item> The bitstream length defaults to 128 bits. </item>
+<item> A "seed" value of -1 indicates that a new set of random bits
+			should be generated each time the subVI is called. Positive seed values will cause the same
+	pattern to be generated each time, with the particular seed value selecting a different pattern. </item>
+
+</list>
+
+</section>
+
+<section id="sec11">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par12">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par13">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/ZQAJTo1cTY8" window="new">https://youtu.be/ZQAJTo1cTY8</link> (1:33)</title><media id="eip-idm264712336" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/ZQAJTo1cTY8?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for util_BitstreamFromRandom.vi
+</caption></figure></section>
+
+</content>
+</document>

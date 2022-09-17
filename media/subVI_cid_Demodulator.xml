@@ -1,0 +1,137 @@
+<!-- title = cid_Demodulator.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to demodulate a Caller ID FSK (frequency shift keying) signal using a PLL (phase-locked loop) from the LabVIEW Modulation Toolkit.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: cid_Demodulator.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+			Demodulate a Caller ID FSK (frequency shift keying) signal using a PLL (phase-locked loop) from the
+			LabVIEW Modulation Toolkit. The subVI accepts an signal that can include ringer pulses (the FSK
+			signal itself occurs between the first and second ringer pulses), and demodulates the signal to baseband.
+			A "PLL locked" output signal indicates the portion of the baseband signal that should be considered useable
+			for further decoding.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+			Caller ID decoding ("cid" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>5</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}FSK signal{/code} -- waveform</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}VCO carrier frequency [Hz]{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}VCO gain [degrees/V]{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}phase error LPF cutoff frequency [Hz]{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}comparator threshold for PLL lock{/code} -- DBL</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}baseband signal{/code} -- waveform</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}phase error magnitude{/code} -- waveform</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}PLL locked{/code} -- 1-D Boolean array</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>6</Dimsize>
+	<String> <Name>String</Name> <Val>
+			{code type=&quot;inline&quot;}FSK signal{/code} should contain an audio recording of the Caller ID FSK message
+			sent by the telephone company central office (CO). The signal should lie in the range &#xb1;1; ringer pulses
+			will be clipped, and the FSK signal amplitude should occupy as much of the &#xb1;1 range as possible without clipping.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The {code type=&quot;inline&quot;}baseband signal{/code} output contains the demodulated baseband signal produced
+			by the LabVIEW Modulation Toolkit "MT Phase Locked Loop.vi" phase error output.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The Boolean array {code type=&quot;inline&quot;}PLL locked{/code} indicates the region in which the PLL is locked onto
+			the FSK signal; this indicator serves to distinguish between the valid FSK signal and any other portion of the original
+			recorded signal.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The VCO carrier frequency and gain are two controls for the PLL.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			{code type=&quot;inline&quot;}phase error LPF cutoff frequency{/code} sets the cutoff frequency of the lowpass filter applied to the 
+			magnitude of the PLL phase error. The phase error magnitude is a rapidly changing and relatively large amplitude signal
+			value when the PLL is out of lock, and a relatively low amplitude signal in lock. The lowpass filter removes the
+			rapid variation. The {code type=&quot;inline&quot;}phase error magnitude{/code} output is the lowpass-filtered absolute value of the PLL phase error.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			{code type=&quot;inline&quot;}comparator threshold{/code} sets the threshold level for the comparator that generates the {code type=&quot;inline&quot;}PLL locked{/code} Boolean output.
+	</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+		The LabVIEW Modulation Toolkit PLL is introduced and demonstrated in the screencast video of {cnxn target=&quot;video-explained&quot;/}.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video-explained</Val> </String>
+<String> <Name>video name</Name> <Val>explained</Val> </String>
+<String> <Name>webpage title</Name> <Val>LabVIEW MT PLL</Val> </String>
+<String> <Name>caption</Name> <Val>Demonstration of the LabVIEW Modulation Toolkit PLL</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>cid_Demodulator.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for cid_Demodulator.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

@@ -1,0 +1,180 @@
+<!-- title = bpm_ProductModulator.vi -->
+<!-- summary = 
+Build a LabVIEW subVI to modulate a baseband signal by a sinusoidal carrier wave.
+-->
+
+<?xml version='1.0' standalone='yes' ?>
+<LVData>
+<Version>8.2</Version>
+
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW SubVI: bpm_ProductModulator.vi</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val> {emphasis}Description:{/emphasis} 
+			Modulate a baseband signal by a sinusoidal carrier wave that has unit energy
+			as measured over a single bit interval.
+	</Val> </String>
+	<String> <Name>String</Name> <Val> {emphasis}Category:{/emphasis} 
+			Bandpass modulation ("bpm" prefix)
+	</Val> </String>
+</Array>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Inputs (Controls)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>4</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}waveform in{/code} -- waveform</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}Tb, bit interval [s]{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}fc, carrier frequency [Hz]{/code} -- DBL</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}fs, sampling frequency [Hz]{/code} -- DBL</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>para</Name> <Val>
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</Val> </String>
+
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Outputs (Indicators)</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>1</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>2</Dimsize>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}waveform out{/code} -- waveform</Val> </String>
+	<String> <Name>String</Name> <Val>{code type=&quot;inline&quot;}carrier{/code} -- waveform</Val> </String>
+</Array>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>Required Behavior</Val> </String>
+
+<Cluster> <Name>list</Name> <NumElts>3</NumElts>
+<EW> <Name>type</Name> <Choice>Bulleted</Choice> <Choice>Enumerated</Choice> <Val>0</Val> </EW>
+<String> <Name>list name (optional)</Name> <Val></Val> </String>
+<Array> <Name>list items</Name> <Dimsize>3</Dimsize>
+	<String> <Name>String</Name> <Val>
+			{code type=&quot;inline&quot;}waveform out{/code} is the product of {code type=&quot;inline&quot;}waveform in{/code} 
+			and the sinusoidal carrier signal
+{m:math display=&apos;block&apos;}
+ {m:semantics}
+  {m:mrow}
+   {m:msub}
+    {m:mi}A{/m:mi}
+    {m:mi}c{/m:mi}
+   {/m:msub}
+   {m:mi}cos{/m:mi}{m:mo}&amp;#x2061;{/m:mo}{m:mo stretchy=&apos;false&apos;}({/m:mo}{m:mn}2{/m:mn}{m:mi}&amp;#x03C0;{/m:mi}{m:msub}
+    {m:mi}f{/m:mi}
+    {m:mi}c{/m:mi}
+   {/m:msub}
+   {m:mi}t{/m:mi}{m:mo stretchy=&apos;false&apos;}){/m:mo}
+  {/m:mrow}
+ {m:annotation encoding=&apos;MathType-MTEF&apos;}
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGbbWaaSbaaSqaaiaadogaaeqaaOGaci4yaiaac+gacaGGZbGaaiikaiaaikdacqaHapaCcaWGMbWaaSbaaSqaaiaadogaaeqaaOGaamiDaiaacMcaaaa@40D1@{/m:annotation}
+ {/m:semantics}
+{/m:math}, where
+{m:math display=&apos;block&apos;}
+ {m:semantics}
+  {m:mrow}
+   {m:msub}
+    {m:mi}A{/m:mi}
+    {m:mi}c{/m:mi}
+   {/m:msub}
+  {/m:mrow}
+ {m:annotation encoding=&apos;MathType-MTEF&apos;}
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGbbWaaSbaaSqaaiaadogaaeqaaaaa@3720@{/m:annotation}
+ {/m:semantics}
+{/m:math} is the carrier amplitude and 
+{m:math display=&apos;block&apos;}
+ {m:semantics}
+  {m:mrow}
+   {m:msub}
+    {m:mi}f{/m:mi}
+    {m:mi}c{/m:mi}
+   {/m:msub}
+  {/m:mrow}
+ {m:annotation encoding=&apos;MathType-MTEF&apos;}
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGMbWaaSbaaSqaaiaadogaaeqaaaaa@3745@{/m:annotation}
+ {/m:semantics}
+{/m:math} is the carrier frequency in Hz.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			The carrier sinusoid amplitude must be 
+{m:math display=&apos;block&apos;}
+ {m:semantics}
+  {m:mrow}
+   {m:msub}
+    {m:mi}A{/m:mi}
+    {m:mi}c{/m:mi}
+   {/m:msub}
+   {m:mo}={/m:mo}{m:msqrt}
+    {m:mrow}
+     {m:mfrac}
+      {m:mn}2{/m:mn}
+      {m:mrow}
+       {m:msub}
+        {m:mi}T{/m:mi}
+        {m:mi}b{/m:mi}
+       {/m:msub}
+      {/m:mrow}
+     {/m:mfrac}
+    {/m:mrow}
+   {/m:msqrt}
+  {/m:mrow}
+ {m:annotation encoding=&apos;MathType-MTEF&apos;}
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGbbWaaSbaaSqaaiaadogaaeqaaOGaeyypa0ZaaOaaaeaadaWcaaqaaiaaikdaaeaacaWGubWaaSbaaSqaaiaadkgaaeqaaaaaaeqaaaaa@3AF8@{/m:annotation}
+ {/m:semantics}
+ {/m:math} in order to achieve the "unit energy per bit interval" criterion. The {cnxn target=&quot;video-theory&quot;/} screencast video explains
+ the origin of this equation.
+	</Val> </String>
+	<String> <Name>String</Name> <Val>
+			{code type=&quot;inline&quot;}carrier{/code} is the output of the sinusoidal oscillator used to modulate the inbound signal.
+	</Val> </String>
+</Array>
+</Cluster>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video-theory</Val> </String>
+<String> <Name>video name</Name> <Val>theory</Val> </String>
+<String> <Name>webpage title</Name> <Val>Explanation of "unit energy per bit" amplitude</Val> </String>
+<String> <Name>caption</Name> <Val>Explanation of the "unit energy per bit" amplitude equation</Val> </String>
+</Cluster>
+
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+<String> <Name>sec</Name> <Val>LabVIEW Coding Tips</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		View the screencast video in {cnxn document=&quot;m14767&quot;}Create a SubVI in LabVIEW{/cnxn} to learn the mechanics of subVIs.
+</Val> </String>
+
+<String> <Name>para</Name> <Val>
+		Refer to the {cnxn target=&quot;video&quot;/} screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</Val> </String>
+
+<Cluster> <Name>video</Name> <NumElts>4</NumElts>
+<String> <Name>ID (optional)</Name> <Val>video</Val> </String>
+<String> <Name>video name</Name> <Val>vi</Val> </String>
+<String> <Name>webpage title</Name> <Val>bpm_ProductModulator.vi</Val> </String>
+<String> <Name>caption</Name> <Val>LabVIEW coding tips and techniques for bpm_ProductModulator.vi</Val> </String>
+</Cluster>
+
+<String> <Name>secend</Name> <Val></Val> </String>
+<!-------------------------------------------------------->
+
+</LVData>

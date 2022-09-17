@@ -1,0 +1,187 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>bpm_ProductModulator.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18556</md:content-id>
+  <md:title>bpm_ProductModulator.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to modulate a baseband signal by a sinusoidal carrier wave.</md:abstract>
+  <md:uuid>d6a11673-6ad2-45a3-8af7-f7d83b945f0e</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm7563840" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm9088336">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: bpm_ProductModulator.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Modulate a baseband signal by a sinusoidal carrier wave that has unit energy
+			as measured over a single bit interval.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+			Bandpass modulation ("bpm" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">waveform in</code> -- waveform </item>
+<item> <code display="inline">Tb, bit interval [s]</code> -- DBL </item>
+<item> <code display="inline">fc, carrier frequency [Hz]</code> -- DBL </item>
+<item> <code display="inline">fs, sampling frequency [Hz]</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">waveform out</code> -- waveform </item>
+<item> <code display="inline">carrier</code> -- waveform </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			<code display="inline">waveform out</code> is the product of <code display="inline">waveform in</code> 
+			and the sinusoidal carrier signal
+<m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>A</m:mi>
+    <m:mi>c</m:mi>
+   </m:msub>
+   <m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:msub>
+    <m:mi>f</m:mi>
+    <m:mi>c</m:mi>
+   </m:msub>
+   <m:mi>t</m:mi><m:mo stretchy="false">)</m:mo>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGbbWaaSbaaSqaaiaadogaaeqaaOGaci4yaiaac+gacaGGZbGaaiikaiaaikdacqaHapaCcaWGMbWaaSbaaSqaaiaadogaaeqaaOGaamiDaiaacMcaaaa@40D1@</m:annotation>
+ </m:semantics>
+</m:math>, where
+<m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>A</m:mi>
+    <m:mi>c</m:mi>
+   </m:msub>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGbbWaaSbaaSqaaiaadogaaeqaaaaa@3720@</m:annotation>
+ </m:semantics>
+</m:math> is the carrier amplitude and 
+<m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>f</m:mi>
+    <m:mi>c</m:mi>
+   </m:msub>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGMbWaaSbaaSqaaiaadogaaeqaaaaa@3745@</m:annotation>
+ </m:semantics>
+</m:math> is the carrier frequency in Hz.
+	 </item>
+<item> 
+			The carrier sinusoid amplitude must be 
+<m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>A</m:mi>
+    <m:mi>c</m:mi>
+   </m:msub>
+   <m:mo>=</m:mo><m:msqrt>
+    <m:mrow>
+     <m:mfrac>
+      <m:mn>2</m:mn>
+      <m:mrow>
+       <m:msub>
+        <m:mi>T</m:mi>
+        <m:mi>b</m:mi>
+       </m:msub>
+      </m:mrow>
+     </m:mfrac>
+    </m:mrow>
+   </m:msqrt>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYb1uaebbnrfifHhDYfgasaacH8srps0lbbf9q8WrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfea0=yr0RYxir=Jbba9q8aq0=yq=He9q8qqQ8frFve9Fve9Ff0dmeaabaqaciGacaGaaeqabaWaaeaaeaaakeaacaWGbbWaaSbaaSqaaiaadogaaeqaaOGaeyypa0ZaaOaaaeaadaWcaaqaaiaaikdaaeaacaWGubWaaSbaaSqaaiaadkgaaeqaaaaaaeqaaaaa@3AF8@</m:annotation>
+ </m:semantics>
+ </m:math> in order to achieve the "unit energy per bit interval" criterion. The <link target-id="video-theory"/> screencast video explains
+ the origin of this equation.
+	 </item>
+<item> 
+			<code display="inline">carrier</code> is the output of the sinusoidal oscillator used to modulate the inbound signal.
+	 </item>
+
+</list>
+
+<figure id="video-theory"><title><link url="https://youtu.be/_fw-qIvX9V0" window="new">https://youtu.be/_fw-qIvX9V0</link> (2:41)</title><media id="eip-idm427783648" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/_fw-qIvX9V0?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] Explanation of the "unit energy per bit" amplitude equation
+</caption></figure></section>
+
+<section id="sec11">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par12">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par13">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/KuKY_VO-icQ" window="new">https://youtu.be/KuKY_VO-icQ</link> (6:17)</title><media id="eip-idm1226037552" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/KuKY_VO-icQ?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for bpm_ProductModulator.vi
+</caption></figure></section>
+
+</content>
+</document>

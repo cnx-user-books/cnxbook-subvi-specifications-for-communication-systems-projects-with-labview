@@ -1,0 +1,119 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>pam_TransmitFilter.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18472</md:content-id>
+  <md:title>pam_TransmitFilter.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to convert a sequence of signal levels to a signal waveform with a user-defined pulse shape.</md:abstract>
+  <md:uuid>67676bf4-f2bf-4793-817a-f4118f671bbc</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm5105632" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm3554384">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: pam_TransmitFilter.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+		Convert a sequence (array) of signal levels to a signal waveform with a user-defined pulse shape. Each element
+		of the signal levels array generates one "analog" pulse (a sampled-value discrete-time waveform). 
+		This device is commonly called a "transmit filter" since it is implemented by an impulse train driving an
+		FIR filter.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		Pulse amplitude modulation (PAM) ("pam" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">signal levels in</code> -- 1-D DBL array </item>
+<item> <code display="inline">pulse shape</code> -- 1-D DBL array </item>
+<item> <code display="inline">Tb, bit interval [s]</code> -- DBL </item>
+<item> <code display="inline">fs, sampling frequency [Hz]</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">waveform out</code> -- waveform </item>
+<item> <code display="inline">samples per bit</code> -- 1-D DBL array </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			Each element of <code display="inline">signal levels in</code> indicates the amplitude of a user-defined <code display="inline">pulse shape</code>, which is
+			assumed to have a unit amplitude.
+	 </item>
+<item> 
+			Pulses are generated once each bit interval defined by <code display="inline">Tb</code>. The finished waveform <code display="inline">waveform out</code> is 
+			the superposition (sum) of all individual time-shifted pulse waveforms.
+	 </item>
+<item> 
+			The prototype waveform <code display="inline">waveform out</code> may extend beyond a single bit interval.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/-Nrwbf4tkWA" window="new">https://youtu.be/-Nrwbf4tkWA</link> (9:35)</title><media id="eip-idm602618432" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/-Nrwbf4tkWA?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for pam_TransmitFilter.vi
+</caption></figure></section>
+
+</content>
+</document>

@@ -1,0 +1,99 @@
+<document xmlns="http://cnx.rice.edu/cnxml" id="new" module-id="" cnxml-version="0.7">
+  <title>pam_RectanglePulse.vi</title>
+
+<content>
+
+<table frame="none" id="labview_banner" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idm8391200" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm15393040">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: pam_RectanglePulse.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+		Create a rectangle pulse shape suitable for pulse amplitude modulation (PAM) transmitters.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+		Pulse amplitude modulation (PAM) ("pam" prefix)
+	 </item>
+
+</list>
+
+<para id="par3">
+</para>
+
+</section>
+
+<section id="sec4">
+<title>Inputs (Controls)</title>
+
+<list id="list5" list-type="enumerated">
+
+<item> <code display="inline">Tb, bit interval [s]</code> -- DBL </item>
+<item> <code display="inline">fs, sampling frequency [Hz]</code> -- DBL </item>
+
+</list>
+
+<para id="par6">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec7">
+<title>Outputs (Indicators)</title>
+
+<list id="list8" list-type="enumerated">
+
+<item> <code display="inline">pulse shape</code> -- 1-D DBL array </item>
+
+</list>
+
+</section>
+
+<section id="sec9">
+<title>Required Behavior</title>
+
+<list id="list10" list-type="bulleted">
+
+<item> 
+			<code display="inline">pulse shape</code> is an array of constant unit value.
+	 </item>
+<item> 
+			The array length is one bit interval <code display="inline">Tb</code> times the sampling frequency
+			<code display="inline">fs</code>.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec11">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par12">
+		Review the LabVIEW help page for "Programming | Array | Initialize Array."
+</para>
+
+</section>
+
+</content>
+</document>

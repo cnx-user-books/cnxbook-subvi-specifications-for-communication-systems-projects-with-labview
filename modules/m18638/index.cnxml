@@ -1,0 +1,144 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>cid_Demodulator.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18638</md:content-id>
+  <md:title>cid_Demodulator.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to demodulate a Caller ID FSK (frequency shift keying) signal using a PLL (phase-locked loop) from the LabVIEW Modulation Toolkit.</md:abstract>
+  <md:uuid>bdd34ee3-7066-4b1e-b1cc-c4ca1385ce6a</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idp5449632" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm591488">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: cid_Demodulator.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Demodulate a Caller ID FSK (frequency shift keying) signal using a PLL (phase-locked loop) from the
+			LabVIEW Modulation Toolkit. The subVI accepts an signal that can include ringer pulses (the FSK
+			signal itself occurs between the first and second ringer pulses), and demodulates the signal to baseband.
+			A "PLL locked" output signal indicates the portion of the baseband signal that should be considered useable
+			for further decoding.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+			Caller ID decoding ("cid" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">FSK signal</code> -- waveform </item>
+<item> <code display="inline">VCO carrier frequency [Hz]</code> -- DBL </item>
+<item> <code display="inline">VCO gain [degrees/V]</code> -- DBL </item>
+<item> <code display="inline">phase error LPF cutoff frequency [Hz]</code> -- DBL </item>
+<item> <code display="inline">comparator threshold for PLL lock</code> -- DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">baseband signal</code> -- waveform </item>
+<item> <code display="inline">phase error magnitude</code> -- waveform </item>
+<item> <code display="inline">PLL locked</code> -- 1-D Boolean array </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			<code display="inline">FSK signal</code> should contain an audio recording of the Caller ID FSK message
+			sent by the telephone company central office (CO). The signal should lie in the range ±1; ringer pulses
+			will be clipped, and the FSK signal amplitude should occupy as much of the ±1 range as possible without clipping.
+	 </item>
+<item> 
+			The <code display="inline">baseband signal</code> output contains the demodulated baseband signal produced
+			by the LabVIEW Modulation Toolkit "MT Phase Locked Loop.vi" phase error output.
+	 </item>
+<item> 
+			The Boolean array <code display="inline">PLL locked</code> indicates the region in which the PLL is locked onto
+			the FSK signal; this indicator serves to distinguish between the valid FSK signal and any other portion of the original
+			recorded signal.
+	 </item>
+<item> 
+			The VCO carrier frequency and gain are two controls for the PLL.
+	 </item>
+<item> 
+			<code display="inline">phase error LPF cutoff frequency</code> sets the cutoff frequency of the lowpass filter applied to the 
+			magnitude of the PLL phase error. The phase error magnitude is a rapidly changing and relatively large amplitude signal
+			value when the PLL is out of lock, and a relatively low amplitude signal in lock. The lowpass filter removes the
+			rapid variation. The <code display="inline">phase error magnitude</code> output is the lowpass-filtered absolute value of the PLL phase error.
+	 </item>
+<item> 
+			<code display="inline">comparator threshold</code> sets the threshold level for the comparator that generates the <code display="inline">PLL locked</code> Boolean output.
+	 </item>
+
+</list>
+
+<para id="par10">
+		The LabVIEW Modulation Toolkit PLL is introduced and demonstrated in the screencast video of <link target-id="video-explained"/>.
+</para>
+
+<figure id="video-explained"><title><link url="https://youtu.be/9KMQqkv0POU" window="new">https://youtu.be/9KMQqkv0POU</link> (11:16)</title><media id="eip-idm292920944" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/9KMQqkv0POU?rel=0" autoplay="false" width="640" height="460"/></media>
+
+<caption>[video] Demonstration of the LabVIEW Modulation Toolkit PLL
+</caption></figure></section>
+
+<section id="sec12">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par13">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par14">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/TYCdfrp1UF4" window="new">https://youtu.be/TYCdfrp1UF4</link> (7:51)</title><media id="eip-idm462884736" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/TYCdfrp1UF4?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for cid_Demodulator.vi
+</caption></figure></section>
+
+</content>
+</document>

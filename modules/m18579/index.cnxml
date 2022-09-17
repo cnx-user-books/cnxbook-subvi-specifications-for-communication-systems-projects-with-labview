@@ -1,0 +1,122 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>regen_Correlator.vi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m18579</md:content-id>
+  <md:title>regen_Correlator.vi</md:title>
+  <md:abstract>Build a LabVIEW subVI to demodulate a pulse-amplitude modulated (PAM) signal using a correlator.</md:abstract>
+  <md:uuid>16551312-3d3f-4124-8675-52d250b8f2f5</md:uuid>
+</metadata>
+<content>
+
+<table id="labview_banner" frame="none" summary=""><tgroup cols="2">
+<colspec rowsep="0" colsep="0"/> <colspec colwidth="6in" rowsep="0" colsep="0"/>
+<tbody>
+  <row>
+    <entry morerows="3"><media id="idp11940144" alt=""><image src="../../media/LabVIEWtop.png" mime-type="image/png"/></media></entry>
+    <entry> This module refers to LabVIEW, a software development environment that features a graphical programming language.
+       Please see the <link document="m15428">LabVIEW QuickStart Guide</link> module for tutorials and documentation that will help you:</entry>
+  </row>
+  <row> <entry>• Apply LabVIEW to Audio Signal Processing </entry> </row>
+  <row> <entry>• Get started with LabVIEW</entry> </row>
+  <row> <entry>• Obtain a fully-functional evaluation edition of LabVIEW</entry> </row>
+</tbody>
+</tgroup>
+</table>
+
+<note id="idm387824">
+Visit <link document="m17319">LabVIEW Setup</link> to learn how to adjust your own LabVIEW environment to match the settings used by the LabVIEW screencast video(s) in this module.
+Click the "Fullscreen" button at the lower right corner of the video player if the video does not fit properly within your browser window.
+</note>
+
+<section id="sec1">
+<title>LabVIEW SubVI: regen_Correlator.vi</title>
+
+<list id="list2" list-type="bulleted">
+
+<item>  <emphasis>Description:</emphasis> 
+			Demodulate a pulse-amplitude modulated (PAM) signal using a correlator.
+			The correlator multiples the received signal by the same pulse shape used
+			by the transmitter and integrates the product over the bit interval.
+			A Boolean control indicates when to clear the integrator and restart the pulse.
+
+			This subVI is intended for point-by-point operation within a repeating
+			structure such as a for-loop or while-loop.
+	 </item>
+<item>  <emphasis>Category:</emphasis> 
+			Bitstream regeneration ("regen" prefix)
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec3">
+<title>Inputs (Controls)</title>
+
+<list id="list4" list-type="enumerated">
+
+<item> <code display="inline">signal in</code> -- DBL </item>
+<item> <code display="inline">fs [Hz]</code> -- DBL </item>
+<item> <code display="inline">start integrating</code> -- Boolean </item>
+<item> <code display="inline">pulse</code> -- 1-D array of DBL </item>
+
+</list>
+
+<para id="par5">
+Parentheses ( ) indicate default value; square brackets [ ] designate units.
+</para>
+
+</section>
+
+<section id="sec6">
+<title>Outputs (Indicators)</title>
+
+<list id="list7" list-type="enumerated">
+
+<item> <code display="inline">signal out</code> -- DBL </item>
+
+</list>
+
+</section>
+
+<section id="sec8">
+<title>Required Behavior</title>
+
+<list id="list9" list-type="bulleted">
+
+<item> 
+			<code display="inline">signal out</code> is the time integral of the product of 
+			<code display="inline">signal in</code> and the pulse shape <code display="inline">pulse</code>.
+			The integration is computed on a point-by-point basis, so each call to the subVI calculates
+			only a single output value. The integrator output and position (index) within the pulse signal
+			is preserved from one subVI call to the next.
+	 </item>
+<item> 
+			When <code display="inline">start integrating</code> is <code display="inline">T</code> 
+			the integrator is reset and the pulse signal index is reset to zero, i.e., the beginning of the
+			pulse shape array.
+	 </item>
+
+</list>
+
+</section>
+
+<section id="sec10">
+<title>LabVIEW Coding Tips</title>
+
+<para id="par11">
+		View the screencast video in <link document="m14767">Create a SubVI in LabVIEW</link> to learn the mechanics of subVIs.
+</para>
+
+<para id="par12">
+		Refer to the <link target-id="video"/> screencast video for LabVIEW coding tips and techniques specific to this subVI.
+</para>
+
+<figure id="video"><title><link url="https://youtu.be/fZpk1wR_xhk" window="new">https://youtu.be/fZpk1wR_xhk</link> (5:11)</title><media id="eip-idm1671910672" display="block" alt="Insert alt text here"><video mime-type="video/mpeg" src="https://www.youtube.com/embed/fZpk1wR_xhk?rel=0" autoplay="false" width="640" height="460"/></media>
+
+
+<caption>[video] LabVIEW coding tips and techniques for regen_Correlator.vi
+</caption></figure></section>
+
+</content>
+</document>
